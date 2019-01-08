@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <title>My Umi</title>
+  <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+  <link rel="icon" href="https://avatars0.githubusercontent.com/u/26698816?s=40&v=4" />
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<script type="text/javascript">
+    (function(a){window.watermarkdivs=[];var b=function(f){var q={watermark_id:"wm_div_id",watermark_txt:"my umi",watermark_x:20,watermark_y:20,watermark_rows:0,watermark_cols:0,watermark_x_space:100,watermark_y_space:50,watermark_font:"微软雅黑",watermark_color:"black",watermark_fontsize:"18px",watermark_alpha:0.15,watermark_width:150,watermark_height:100,watermark_angle:15};if(arguments.length===1&&typeof arguments[0]==="object"){var c=arguments[0]||{};for(key in c){if(c[key]&&q[key]&&c[key]===q[key]){continue}else{if(c[key]){q[key]=c[key]}}}}var g=document.getElementById(q.watermark_id);if(g){var o=g.parentNode;if(o){o.removeChild(g)}}var n=Math.max(document.body.scrollWidth,document.body.clientWidth);var m=Math.max(document.body.scrollHeight,document.body.clientHeight);var s=document.createDocumentFragment();var d=document.getElementById(q.watermark_id);if(!d){d=document.createElement("div");d.id=q.watermark_id;d.style.pointerEvents="none";if(typeof d.createShadowRoot==="function"){shadowRoot=d.createShadowRoot()}else{shadowRoot=d}var e=document.body.children;var p=Math.floor(Math.random()*(e.length-1));if(e[p]){document.body.insertBefore(d,e[p])}else{document.body.appendChild(d)}}else{if(d,shadowRoot){shadowRoot=d.shadowRoot}}if(q.watermark_cols==0||(parseInt(q.watermark_x+q.watermark_width*q.watermark_cols+q.watermark_x_space*(q.watermark_cols-1))>n)){q.watermark_cols=parseInt((n-q.watermark_x+q.watermark_x_space)/(q.watermark_width+q.watermark_x_space));q.watermark_x_space=parseInt((n-q.watermark_x-q.watermark_width*q.watermark_cols)/(q.watermark_cols-1))}if(q.watermark_rows==0||(parseInt(q.watermark_y+q.watermark_height*q.watermark_rows+q.watermark_y_space*(q.watermark_rows-1))>m)){q.watermark_rows=parseInt((q.watermark_y_space+m-q.watermark_y)/(q.watermark_height+q.watermark_y_space));q.watermark_y_space=parseInt(((m-q.watermark_y)-q.watermark_height*q.watermark_rows)/(q.watermark_rows-1))}var u;var t;for(var l=0;l<q.watermark_rows;l++){t=q.watermark_y+(q.watermark_y_space+q.watermark_height)*l;for(var h=0;h<q.watermark_cols;h++){u=q.watermark_x+(q.watermark_width+q.watermark_x_space)*h;var k=document.createElement("div");var r=document.createTextNode(q.watermark_txt);k.appendChild(r);k.id=q.watermark_id+l+h;k.style.webkitTransform="rotate(-"+q.watermark_angle+"deg)";k.style.MozTransform="rotate(-"+q.watermark_angle+"deg)";k.style.msTransform="rotate(-"+q.watermark_angle+"deg)";k.style.OTransform="rotate(-"+q.watermark_angle+"deg)";k.style.transform="rotate(-"+q.watermark_angle+"deg)";k.style.visibility="";k.style.position="absolute";k.style.left=u+"px";k.style.top=t+"px";k.style.overflow="hidden";k.style.zIndex="9999";k.style.opacity=q.watermark_alpha;k.style.fontSize=q.watermark_fontsize;k.style.fontFamily=q.watermark_font;k.style.color=q.watermark_color;k.style.textAlign="center";k.style.width=q.watermark_width+"px";k.style.height=q.watermark_height+"px";k.style.display="block";shadowRoot.appendChild(k)}}};a.init=function(c){window.addEventListener("load",function(){b(c)});window.addEventListener("onrize",function(){b(c)});window.addEventListener("DOMContentLoaded",function(){b(c)})};a.load=function(c){b(c)}})(window.watermark={});
+  </script>
+  <script type="text/javascript">
+    function getCookieValue(name) {
+      var arr = document.cookie.replace(/\s/g, '').split(';') || []
+      var arrLen = arr.length
+
+      for (var i = 0; i < arrLen; i++) {
+        var tempArr = arr[i].split('=')
+
+        if (tempArr[0] == name) {
+          return decodeURIComponent(tempArr[1])
+        }
+      }
+
+      return ''
+    }
+
+    var watermark_txt = getCookieValue('user_name') || 'my umi'
+
+    if (watermark_txt) {
+      watermark.load({
+        watermark_txt: watermark_txt
+      })
+    }
+  </script>
+</html>

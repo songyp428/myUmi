@@ -1,6 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'dva'
-import {Button} from 'antd'
+import {
+  Menu,
+  Avatar,
+  Dropdown
+} from 'antd'
 import headerStyle from './header.less'
 
 class MyHeader extends React.Component {
@@ -18,9 +22,21 @@ class MyHeader extends React.Component {
     let {
       dispatch,
       global: {
-        
+        user
       }
     } = this.props
+
+    const headerMenu = (
+      <Menu>
+        <Menu.Item style={{borderBottom: '1px solid #ddd'}}>
+          <div>sign in as</div>
+          <div>{user.userName || '未登录'}</div>
+        </Menu.Item>
+        <Menu.Item>
+          <a>exit</a>
+        </Menu.Item>
+      </Menu>
+    )
     
     return (
       <div className={headerStyle['wrap']}>
@@ -28,7 +44,15 @@ class MyHeader extends React.Component {
           <span className={headerStyle['left-title']}>My Umi</span>
         </div>
         <div className={headerStyle['right']}>
-          <div className={headerStyle['exit-logo']}></div>
+          {/*<div className={headerStyle['exit-logo']}></div>*/}
+          <Dropdown overlay={headerMenu}>
+            <div>
+              {user && user.avatar
+                ? <Avatar src={user.avatar} className={headerStyle['user-logo']} />
+                : <Avatar icon="user" className={headerStyle['user-logo']} />
+              }
+            </div>
+          </Dropdown>
         </div>
       </div>
     )

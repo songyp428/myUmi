@@ -1,22 +1,23 @@
 import {
   login
 } from '../services/global'
+
 export default {
-	namespace: 'global',
-	state: {
+  namespace: 'global',
+  state: {
+    user: {}
+  },
+  subscriptions: {
 
-	},
-	subscriptions: {
-
-	},
-	effects: {
+  },
+  effects: {
     *login({ payload = {}}, { call, put}) {
-      
+
     }
-	},
-	reducers: {
-		updateState(state, action) {
-			return {...state, ...action.payload}
-		}
-	}
+  },
+  reducers: {
+    updateState(state, action) {
+      return {...state, ...action.payload}
+    }
+  }
 }
