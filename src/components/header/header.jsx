@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'dva'
 import {Button} from 'antd'
+import headerStyle from './header.less'
 
 class MyHeader extends React.Component {
   constructor(props) {
@@ -8,11 +9,9 @@ class MyHeader extends React.Component {
   }
 
   componentWillMount() {
-    console.log('componentWillMount')
   }
 
   componentDidMount() {
-    console.log('componentDidMount')
   }
 
   render() {
@@ -22,16 +21,15 @@ class MyHeader extends React.Component {
         
       }
     } = this.props
-
-    const handleChangeCount = () => {
-      dispatch({
-        type: 'test/updateState'
-      })
-    }
-
+    
     return (
-      <div>
-        
+      <div className={headerStyle['wrap']}>
+        <div className={headerStyle['left']}>
+          <span className={headerStyle['left-title']}>My Umi</span>
+        </div>
+        <div className={headerStyle['right']}>
+          <div className={headerStyle['exit-logo']}></div>
+        </div>
       </div>
     )
   }
