@@ -44,7 +44,6 @@ class MyHeader extends React.Component {
           <span className={headerStyle['left-title']}>My Umi</span>
         </div>
         <div className={headerStyle['right']}>
-          {/*<div className={headerStyle['exit-logo']}></div>*/}
           <Dropdown overlay={headerMenu}>
             <div>
               {user && user.avatar
