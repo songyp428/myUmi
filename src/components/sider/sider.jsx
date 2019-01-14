@@ -34,9 +34,9 @@ class MyMenu extends React.Component {
     >
       <SubMenu
         key="sub1"
-        title="动态上传"
+        title="动态表单"
       >
-        <Menu.Item key="1"><Link to="">列表</Link></Menu.Item>
+        <Menu.Item key="1"><Link to="/dynamicForm/list">列表</Link></Menu.Item>
       </SubMenu>
     </Menu>
     )

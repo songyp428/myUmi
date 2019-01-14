@@ -1,3 +1,4 @@
+import menu_key from '../utils/menu'
 import {
   login
 } from '../services/global'
@@ -5,10 +6,20 @@ import {
 export default {
   namespace: 'global',
   state: {
-    user: {}
+    user: {},
+    activeKey: '1'
   },
   subscriptions: {
-
+    setup({dispatch, history}){
+      history.listen(({pathname, query}) => {
+        dispatch({
+          type: 'updateState',
+          payload: {
+            activeKey: menu_key[pathname]
+          }
+        })
+      })
+    }
   },
   effects: {
     *login({ payload = {}}, { call, put}) {
