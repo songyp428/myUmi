@@ -67,30 +67,44 @@ const Dynamic = ({
     }
   }
 
-  const getUploadProps = () => {
+  const getUploadProps = (obj = {}) => {
     return {
       name: 'file',
       action: '/songyp/uploadfile.do',
       listType: 'picture-card',
-
+      defaultFileList: isEdit
+                        ? [{
+                            uid: obj.uid,
+                            name: obj.name,
+                            status: 'done',
+                            url: obj.fileUrl,
+                            response: {
+                              code: 0,
+                              message: 'success',
+                              data: {
+                                fileUrl: obj.fileUrl
+                              }
+                            }
+                          }]
+                        : [],
       beforeUpload(file,fileList){
         // console.log(file)
         // console.log(fileList)
       },
       onChange(info){
-        // console.log(info)
+        console.log(info)
         let fileStatus = info.file.status
 
         if (fileStatus === 'uploading'){
-          console.log('uploading')
+          console.log('uploading----')
         }
 
         if (fileStatus === 'done') {
-          console.log('done')
+          
         } else if (fileStatus === 'removed') {
-          console.log('removed')
+          
         } else {
-          console.log('other')
+          console.log('other status --- ')
         }
       }
     }
@@ -112,13 +126,38 @@ const Dynamic = ({
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('submit')
-    validateFields((errors,values) => {
-      if (!errors) {
-        console.log(values)
+
+    validateFields((err,values) => {
+      if (!err) {
+        // console.log('values:',values)
+        let params = {
+          name: values.name,
+          sex: values.sex,
+          educationLevel: values.educationLevel,
+          picture: '',
+          familyMemberList: []
+        }
+
+        params.picture = values &&
+                         values.picture &&
+                         values.picture.fileList &&
+                         values.picture.fileList.length &&
+                         values.picture.fileList[0] &&
+                         values.picture.fileList[0].response &&
+                         values.picture.fileList[0].response.data &&
+                         values.picture.fileList[0].response.data.fileUrl
+
+        for (let i = 0,len = familyMemberNumberList.length; i < len; i++ ) {
+          params.familyMemberList.push({
+            name: values[`name${familyMemberNumberList[i]}`],
+            sex: values[`sex${familyMemberNumberList[i]}`]
+          })
+        }
+
+        // console.log('params:', params)
       } else {
         message.error('操作失败~')
-        console.log('errors:',errors)
+        console.log('errors:',err)
       }
     })
   }
