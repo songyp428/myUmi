@@ -1,10 +1,40 @@
 .basic-header{
 	position: fixed;
-	z-index: 1;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	justify-content: space-between;
+	padding: 0px 10px;
 	width: 100%;
-	height: 64px;
+	height: 66px;
+	line-height: 66px;
 	background: #FFFFFF;
 	box-shadow: 1px 4px 8px 1px rgba(0,0,0,0.08);
+	z-index: 1;
+	.right{
+		vertical-align: middle;
+		cursor: pointer;
+		.logo{
+			display: inline-block;
+			overflow: hidden;
+			width: 30px;
+			height: 30px;
+			border-radius: 4px;
+			background: url('../assets/images/lee3.jpeg') 50% 0% no-repeat;
+			vertical-align: middle;
+		}
+		.drop{
+			border-bottom: 0 solid transparent;
+			border-left: 4px solid transparent;
+			border-right: 4px solid transparent;
+			border-top-style: solid;
+			border-top-width: 4px;
+			content: "";
+			display: inline-block;
+			height: 0;
+			vertical-align: middle;
+			width: 0;
+		}
+	}
 }
 
 .basic-content-layout{
