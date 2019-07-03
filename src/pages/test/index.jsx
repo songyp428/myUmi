@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'dva'
 import {Button} from 'antd'
 
+import Hello from '../../components/hello.js'
+
 class TestComponent extends React.Component {
 	constructor(props) {
 	    super(props)
@@ -36,6 +38,7 @@ class TestComponent extends React.Component {
 			<div style={{height: '100000px'}}>
 				<p>{count}</p>
 				<Button onClick={handleChangeCount}>change</Button>
+				<Hello type="hello" onClick={(value) => {console.log('parent click', value)}} />
 			</div>
 		)
 	}
