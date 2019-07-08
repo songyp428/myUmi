@@ -92,10 +92,27 @@
 .basic-sider{
 	position: fixed;
     height: 100vh;
-    background: #ccc;
+	background: #091d32f7;
+	
+	:global{
+		.ant-menu {
+			background: #b1bbc5f7;
+		}
+		// .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+		// 	background-color: #feffe6;
+		// }
+		// .ant-menu-item-selected{
+		// 	color: #283038;
+		// }
+
+		.ant-menu-vertical .ant-menu-item{
+			margin: 0;
+		}
+	}
 }
 
 .basic-content{
 	margin-left: 200px;
 	box-shadow: 0 4px 0 0 rgba(0,0,0,0.08);
+	background-color: #FFF;
 }

@@ -36,10 +36,9 @@ function BasicLayout ({global, dispatch, children }){
         </div>
         <Layout className={indexStyle['basic-content-layout']}>
           <Sider className={indexStyle['basic-sider']}>
-            <Menu
-              defaultSelectedKeys={['test']}
-            >
+            <Menu defaultSelectedKeys={['func']}>
               <Menu.Item key="test"><Link to="test">函数组件</Link></Menu.Item>
+              <Menu.Item key="cascader"><Link to="cascader">级联组件</Link></Menu.Item>
             </Menu>
           </Sider>
           <Content className={indexStyle['basic-content']}>
