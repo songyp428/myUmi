@@ -1,13 +1,13 @@
 import React from 'react'
 import Link from 'umi/link'
+import { connect } from 'dva'
 import indexStyle from './index.less'
-import { Menu, Icon, Layout } from 'antd'
+import { Menu, Layout } from 'antd'
 const { Sider, Content } = Layout
+const { SubMenu } = Menu
 
-function BasicLayout ({global, dispatch, children }){
-    const handleInfoClick = () => {
-      console.log('info click')
-    }
+function BasicLayout ({ global: { activeKey }, children }){
+  console.log(activeKey)
     return (
       <Layout>
         <div className={indexStyle['basic-header']}>
@@ -36,9 +36,16 @@ function BasicLayout ({global, dispatch, children }){
         </div>
         <Layout className={indexStyle['basic-content-layout']}>
           <Sider className={indexStyle['basic-sider']}>
-            <Menu defaultSelectedKeys={['func']}>
-              <Menu.Item key="test"><Link to="test">函数组件</Link></Menu.Item>
-              <Menu.Item key="cascader"><Link to="cascader">级联组件</Link></Menu.Item>
+            <Menu
+              defaultSelectedKeys={[activeKey]}
+              selectedKeys={[activeKey]}
+              theme="light"
+              mode="inline"
+            >
+              <Menu.Item key="func"><Link to="/test">函数组件</Link></Menu.Item>
+              <SubMenu key="cascader" title="级联组件">
+                <Menu.Item key="cascader/multi"><Link to="/cascader/multi">多选</Link></Menu.Item>
+              </SubMenu>
             </Menu>
           </Sider>
           <Content className={indexStyle['basic-content']}>
@@ -49,4 +56,12 @@ function BasicLayout ({global, dispatch, children }){
     )
 }
 
-export default BasicLayout
+const mapStateToProps = ({
+  global
+}) => {
+  return {
+    global
+  }
+}
+
+export default connect(mapStateToProps)(BasicLayout)
